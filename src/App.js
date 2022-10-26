@@ -1,14 +1,13 @@
+import React, { useEffect } from "react";
 import "./App.css";
-import Bulma from "@vizuaalog/bulmajs";
-
 import "bulma/css/bulma.min.css";
-import { useEffect } from "react";
+import Bulma from "@vizuaalog/bulmajs";
 
 function App() {
   useEffect(() => {
     const scriptTag = document.createElement("script");
     scriptTag.src = "https://js.bepaid.by/widget/be_gateway.js";
-    // scriptTag.async = true;
+    scriptTag.async = true;
 
     scriptTag.onload = () => {
       Object.defineProperty(window, "showWidget", {
@@ -45,7 +44,13 @@ function App() {
 
   return (
     <>
-      <button onClick={window.showWidget}>Click me</button>
+      <button
+        onClick={() => {
+          window.showWidget();
+        }}
+      >
+        Click me
+      </button>
     </>
   );
 }
